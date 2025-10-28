@@ -1,0 +1,127 @@
+---
+title: Quickstart
+description: Get started with Carbon in minutes
+---
+
+
+## Welcome to Carbon
+
+[Carbon](https://carbon.ms) is an open-source manufacturing platform for vertically integrated manufacturing. It provides a modern, minimal, starting-point for building end-to-end manufacturing systems.
+
+### Creating an API Key
+
+To use the API, you need to sign up on [Carbon](https://app.carbon.ms) and get an API key. You can also run Carbon locally by following the [self-hosting guide](/self-hosting).
+
+1. Sign up at [app.carbon.ms](https://app.carbon.ms)
+2. Navigate to [Settings > API Keys](https://app.carbon.ms/x/settings/api-keys)
+3. Create a new API Key
+4. Navigate to [API Docs](https://app.carbon.ms/x/api/js/intro) to get your environment variables
+
+## Creating a Carbon Client with Supabase
+
+```bash tab="TypeScript"
+npm install @supabase/supabase-js
+```
+
+```bash tab="Python"
+pip install supabase
+```
+
+```bash tab="C#"
+dotnet add package supabase
+```
+
+## Initialize the Client
+
+```typescript tab="TypeScript"
+import { createClient } from '@supabase/supabase-js'
+
+const apiKey = process.env.CARBON_API_KEY
+const apiUrl = process.env.CARBON_API_URL
+const publicKey = process.env.CARBON_PUBLIC_KEY
+
+const carbon = createClient(apiUrl, publicKey, {
+  global: {
+    headers: {
+      "carbon-key": apiKey,
+    },
+  },
+});
+```
+
+```python tab="Python"
+import os
+from supabase import create_client, Client
+from supabase.client import ClientOptions
+url: str = os.environ.get("CARBON_API_URL")
+key: str = os.environ.get("CARBON_PUBLIC_KEY")
+carbon: Client = create_client(
+    url,
+    key,
+    headers={
+        "carbon-key": os.environ.get("CARBON_API_KEY")
+    }
+)
+```
+
+```csharp tab="C#"
+using Supabase;
+
+var url = Environment.GetEnvironmentVariable("CARBON_API_URL");
+var publicKey = Environment.GetEnvironmentVariable("CARBON_PUBLIC_KEY");
+var apiKey = Environment.GetEnvironmentVariable("CARBON_API_KEY");
+
+var options = new Supabase.SupabaseOptions
+{
+    AutoConnectRealtime = true,
+    Headers = new Dictionary<string, string>
+    {
+        { "carbon-key", apiKey }
+    }
+};
+var carbon = new Supabase.Client(url, publicKey, options);
+await carbon.InitializeAsync();
+```
+
+
+
+## Make a request to the API
+
+```typescript tab="TypeScript"
+const response = await carbon.from("employees").select("*");
+```
+
+```python tab="Python"
+
+response = (
+    carbon.table("employees")
+    .select("*")
+    .execute()
+)
+```
+
+```csharp tab="C#"
+var employees = await carbon.From<Employee>().Select("*").Execute();
+```
+
+## Read the Docs
+
+Read the [API Docs](https://app.carbon.ms/x/api/js/intro) or view the source code on [GitHub](https://github.com/sortup-dev2/carbon/blob/main/apps/erp/app/modules/production/production.service.ts) to get started.
+
+
+## Next Steps
+
+<Cards>
+  <Card title="TypeScript API Client" href="/clients/typescript-client">
+    Learn how to use the TypeScript client to call the Carbon API
+  </Card>
+  <Card title="Project Overview" href="/concepts/overview">
+    Learn about the Carbon project structure and technology stack
+  </Card>
+  <Card title="Code Conventions" href="/concepts/conventions">
+    Learn about the code conventions used in the Carbon project
+  </Card>
+  <Card title="Self-Hosting" href="/self-hosting">
+    Learn how to self-host Carbon
+  </Card>
+</Cards>

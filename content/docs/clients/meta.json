@@ -1,0 +1,9 @@
+{
+  "title": "API Clients",
+  "defaultOpen": false,
+  "pages": [
+    "typescript-client",
+    "python-client",
+    "dotnet-client"
+  ]
+}

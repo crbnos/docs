@@ -1,0 +1,49 @@
+---
+title: C# Client
+description: Lightweight C# client for implementing Carbon in your app
+---
+
+A lightweight Supabase client for calling the Carbon API from C# projects.
+
+## Installation
+
+```bash title="Terminal"
+dotnet add package supabase
+```
+
+## Usage
+
+```csharp title="Client.cs"
+using Supabase;
+
+var url = Environment.GetEnvironmentVariable("CARBON_API_URL");
+var publicKey = Environment.GetEnvironmentVariable("CARBON_PUBLIC_KEY");
+var apiKey = Environment.GetEnvironmentVariable("CARBON_API_KEY");
+
+var options = new Supabase.SupabaseOptions
+{
+    AutoConnectRealtime = true,
+    Headers = new Dictionary<string, string>
+    {
+        { "carbon-key", apiKey }
+    }
+};
+
+var carbon = new Supabase.Client(url, publicKey, options);
+await carbon.InitializeAsync();
+
+var employees = await carbon.From<Employee>().Select("*").Execute();
+```
+
+## Client Reference
+
+See the community [supabase C# client](https://supabase.com/docs/reference/csharp/introduction) documentation for more information.
+
+## API Reference
+
+See the [Carbon API Reference](https://app.carbon.ms/x/api/js/intro) for more information.
+
+
+## Code Examples
+
+- [quickbooks-desktop-sync/Services/CarbonService.cs](https://github.com/crbnos/quickbooks-desktop-sync/blob/main/Services/CarbonService.cs)

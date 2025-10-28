@@ -1,0 +1,23 @@
+{
+  "title": "Framework",
+  "description": "The docs framework",
+  "icon": "Factory",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "quickstart",
+    "clients",
+    "self-hosting",
+    "---Concepts---",
+    "concepts/overview",
+    "concepts/conventions",
+    "concepts/database-migrations",
+    "concepts/permissions",
+    "concepts/realtime",
+    "concepts/traceability",
+    "---Examples---",
+    "[Quote Configurator](https://github.com/crbnos/carbon/tree/main/examples/quote-configurator)",
+    "[Upload 3D Models](https://github.com/crbnos/carbon/tree/main/examples/upload-3d-model)"
+  ]
+}

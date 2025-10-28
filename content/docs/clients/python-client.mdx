@@ -1,0 +1,51 @@
+---
+title: Python Client
+description: Async Python client for implementing Carbon into your apps
+---
+
+Python client for calling the Carbon API.
+
+## Installation
+
+```bash title="Terminal"
+pip install supabase
+```
+
+
+
+## Quick start
+
+```python title="main.py"
+import os
+from supabase import create_client, Client
+from supabase.client import ClientOptions
+
+url: str = os.environ.get("CARBON_API_URL")
+key: str = os.environ.get("CARBON_PUBLIC_KEY")
+
+
+def main() -> None:
+    carbon: Client = create_client(
+        url,
+        key,
+        headers={
+            "carbon-key": os.environ.get("CARBON_API_KEY")
+        }
+    )
+
+    response = (
+        carbon.table("employees")
+        .select("*")
+        .execute()
+    )
+
+main()
+```
+
+## Client Reference
+
+See the official [supabase python client](https://supabase.com/docs/reference/python/start) documentation for more information.
+
+## API Reference
+
+See the [Carbon API Reference](https://app.carbon.ms/x/api/js/intro) for more information.

@@ -1,0 +1,50 @@
+---
+title: TypeScript Client
+description: Lightweight TypeScript client for implementing Carbon in your app
+---
+
+A lightweight Supabase client for calling the Carbon API from TypeScript or JavaScript projects.
+
+## Installation
+
+```bash title="Terminal"
+npm install @supabase/supabase-js
+# or
+pnpm add @supabase/supabase-js
+# or
+yarn add @supabase/supabase-js
+```
+
+## Usage
+
+```ts title="index.ts"
+import { createClient } from '@supabase/supabase-js'
+
+const apiKey = process.env.CARBON_API_KEY
+const apiUrl = process.env.CARBON_API_URL
+const publicKey = process.env.CARBON_PUBLIC_KEY
+
+const carbon = createClient(apiUrl, publicKey, {
+  global: {
+    headers: {
+      "carbon-key": apiKey,
+    },
+  },
+});
+
+const result = await carbon.from("employees").select("*");
+```
+
+## Client Reference
+
+See the official [supabase javascript client](https://supabase.com/docs/reference/javascript/v1) documentation for more information.
+
+## API Reference
+
+See the [Carbon API Reference](https://app.carbon.ms/x/api/js/intro) for more information.
+
+## Code Examples
+
+- [apps/erp/app/modules/purchasing/purchasing.service.ts](https://github.com/crbnos/carbon/blob/main/apps/erp/app/modules/purchasing/purchasing.service.ts)
+- [apps/erp/app/modules/production/production.service.ts](https://github.com/crbnos/carbon/blob/main/apps/erp/app/modules/production/production.service.ts)
+- [apps/erp/app/modules/sales/sales.service.ts](https://github.com/crbnos/carbon/blob/main/apps/erp/app/modules/sales/sales.service.ts)
