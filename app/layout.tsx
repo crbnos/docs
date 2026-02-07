@@ -8,7 +8,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Carbon",
+  title: "Carbon Documentation",
   description: "Open Source Manufacturing ERP Documentation",
   icons: {
     icon: [
