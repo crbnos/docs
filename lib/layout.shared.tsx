@@ -22,14 +22,14 @@ export function baseOptions(): BaseLayoutProps {
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
-        text: "Website",
-        url: "https://carbon.ms",
-        icon: <Globe className="size-4" />,
-      },
-      {
         text: "GitHub",
         url: "https://github.com/crbnos/carbon",
         icon: <Github className="size-4" />,
+      },
+      {
+        text: "Videos",
+        url: "https://learn.carbon.ms",
+        icon: <Video className="size-4" />,
       },
       {
         text: "Discord",
@@ -37,9 +37,9 @@ export function baseOptions(): BaseLayoutProps {
         icon: <MessageCircle className="size-4" />,
       },
       {
-        text: "Videos",
-        url: "https://learn.carbon.ms",
-        icon: <Video className="size-4" />,
+        text: "Website",
+        url: "https://carbon.ms",
+        icon: <Globe className="size-4" />,
       },
     ],
   };
