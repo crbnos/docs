@@ -10,8 +10,38 @@ For now, please include the required by environment variables found in [env.ts](
 - [Supabase](https://supabase.com)
 - [Upstash](https://upstash.com)
 - [Trigger.dev](https://trigger.dev)
+- [Resend](https://resend.com) (Email service)
+- [Novu](https://novu.co) (In-app notifications)
 
 If you need help self-hosting Carbon in a GovCloud environment, please [contact us](https://carbon.ms/sales).
+
+## Email Service (Resend)
+
+Resend is used for transactional emails including user invitations, email verification, and onboarding.
+
+1. [Create a Resend account](https://resend.com)
+2. Configure the following environment variables:
+   - `RESEND_API_KEY` - Your API key (format: `re_**********`)
+   - `RESEND_DOMAIN` - Your domain for sending emails (no trailing slashes or protocols)
+   - `RESEND_AUDIENCE_ID` - Optional, required for contact management in background jobs
+
+These variables are used in the authentication configuration (`packages/auth/src/config/env.ts`).
+
+## In-App Notifications (Novu)
+
+Novu is used for in-app notifications and notification workflows throughout the application.
+
+1. [Create a Novu account](https://novu.co)
+2. Configure the following environment variables:
+   - `NOVU_APPLICATION_ID` - Client-side public identifier (format: `********************`)
+   - `NOVU_SECRET_KEY` - Server-side secret key, backend only (format: `********************`)
+
+3. After setup, sync your Novu workflows with the Carbon application:
+   ```bash
+   npm run novu:sync
+   ```
+   
+   This command syncs your Novu workflows using the bridge URL.
 
 ## Vercel Configuration
 
