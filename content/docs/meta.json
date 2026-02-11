@@ -4,7 +4,6 @@
   "icon": "Factory",
   "root": true,
   "pages": [
-    "[API Docs](https://app.carbon.ms/docs/api/js/intro)",
     "---Introduction---",
     "index",
     "quickstart",
