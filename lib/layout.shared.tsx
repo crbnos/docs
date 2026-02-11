@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { Github, Globe, MessageCircle, Video } from "lucide-react";
+import { Book, Github, Globe, MessageCircle, Video } from "lucide-react";
 import Image from "next/image";
 
 /**
@@ -21,6 +21,11 @@ export function baseOptions(): BaseLayoutProps {
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
+      {
+        text: "API Docs",
+        url: "https://app.carbon.ms/docs/api/js/intro",
+        icon: <Book className="size-4" />,
+      },
       {
         text: "GitHub",
         url: "https://github.com/crbnos/carbon",
